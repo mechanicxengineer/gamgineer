@@ -1,0 +1,104 @@
+{
+  "user": {
+    "logo": "gamegineer",
+    "name": "Manish",
+    "title": "Game Developer | Engineer",
+    "location": "India",
+    "bio": "Hi, I'm a Game Developer with a passion for creating immersive experiences. I specialize in Unity and Unreal Engine and I love bringing ideas to life through code and design."
+  },
+  "skills": [
+    { "name": "Unity", "level": "90%" },
+    { "name": "Unreal Engine", "level": "85%" },
+    { "name": "C#", "level": "95%" },
+    { "name": "C++", "level": "80%" },
+    { "name": "Shader Graph", "level": "75%" },
+    { "name": "Blender", "level": "70%" },
+    { "name": "AI Programming", "level": "80%" },
+    { "name": "Physics Programming", "level": "75%" }
+  ],
+  "projects": {
+    "micro-games": [
+      {
+        "id": "micro-game-1",
+        "title": "Micro Game 1: Galactic Racer",
+        "description": "A fast-paced micro-game developed in Unity. Features procedural track generation and advanced shader effects. The project includes comprehensive documentation and a post-mortem analysis.",
+        "video": "video/rotate_earth.mp4",
+        "tech": ["Unity", "C#", "Shader Graph"],
+        "repo": "https://github.com/user/galactic-racer",
+        "live": "https://user.itch.io/galactic-racer"
+      },
+      {
+        "id": "micro-game-2",
+        "title": "Micro Game 2: Neon Runner",
+        "description": "An endless runner with a retro-futuristic aesthetic. Built with Unreal Engine, it features dynamic obstacles and a synthwave soundtrack.",
+        "video": "video/cat_on_window.mp4",
+        "tech": ["Unreal Engine", "C++"],
+        "repo": "https://github.com/user/neon-runner",
+        "live": "https://user.itch.io/neon-runner"
+      }
+    ],
+    "tech-demos": [
+      {
+        "id": "tech-demo-1",
+        "title": "Tech Demo: Advanced AI",
+        "description": "A technical demo showcasing advanced AI behaviors for NPCs in Unreal Engine. Includes flocking behavior, pathfinding, and decision trees. The code is well-documented and optimized for performance.",
+        "video": "video/cat_on_window.mp4",
+        "tech": ["Unreal Engine", "C++", "AI"],
+        "repo": "https://github.com/user/advanced-ai-demo"
+      }
+    ],
+    "personal-projects": {
+        "experimental": [
+            {
+              "id": "personal-experimental-1",
+              "title": "Experimental Project",
+              "description": "An experimental VR project focused on realistic physics interactions. This project was a deep dive into the Unity Physics engine and XR Interaction Toolkit. Includes a detailed post-mortem on the challenges and learnings.",
+              "video": "video/rotate_earth.mp4",
+              "tech": ["Unity", "C#", "VR", "Physics"],
+              "repo": "https://github.com/user/vr-physics-sandbox"
+            },
+            {
+              "id": "personal-experimental-2",
+              "title": "Experimental Project",
+              "description": "An experimental VR project focused on realistic physics interactions. This project was a deep dive into the Unity Physics engine and XR Interaction Toolkit. Includes a detailed post-mortem on the challenges and learnings.",
+              "video": "video/rotate_earth.mp4",
+              "tech": ["Unity", "C#", "VR", "Physics"],
+              "repo": "https://github.com/user/vr-physics-sandbox"
+            }
+        ],
+        "failure": [
+            {
+              "id": "personal-failure-1",
+              "title": "Failure Project 1 Title",
+              "description": "An ambitious project that taught valuable lessons about scope management and technical challenges.",
+              "video": "video/cat_on_window.mp4",
+              "tech": ["Unreal Engine", "Blueprints"]
+            },
+            {
+              "id": "personal-failure-2",
+              "title": "Failure Project 2 Title",
+              "description": "An ambitious project that taught valuable lessons about scope management and technical challenges.",
+              "video": "video/cat_on_window.mp4",
+              "tech": ["Unreal Engine", "Blueprints"]
+            },
+            {
+              "id": "personal-failure-3",
+              "title": "Failure Project 3 Title",
+              "description": "An ambitious project that taught valuable lessons about scope management and technical challenges.",
+              "video": "video/cat_on_window.mp4",
+              "tech": ["Unreal Engine", "Blueprints"]
+            }
+        ]
+    }
+  },
+  "contact": {
+    "email": "example@example.com",
+    "phone": "+91 (1234) 567890",
+    "location": "Hyderabad, India",
+    "social": {
+      "github": "https://github.com/user",
+      "linkedin": "https://linkedin.com/in/user",
+      "instagram": "https://instagram.com/user"
+    }
+  }
+}

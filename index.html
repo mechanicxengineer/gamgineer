@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySite - Game Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&family=Press+Start+2P&family=Inter:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="vanta-bg"></div>
+    <canvas id="mouseTrailCanvas"></canvas>
+
+    <header class="header">
+        <div class="logo">MySite</div>
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="header-buttons">
+            <button class="hamburger-menu">&#9776;</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main id="hero">
+        <div class="hero-content">
+            <h2 id="main-title"></h2>
+            <p id="location"></p>
+            <p class="bio" id="bio"></p>
+        </div>
+    </main>
+    
+    <section id="about" class="about-section">
+        <h1 class="section-title">About Me</h1>
+        <div class="player-card">
+            <div class="player-avatar">
+                <img src="images/before.png" alt="Avatar">
+            </div>
+            <div class="player-info">
+                <h2 id="user-name"></h2>
+                <p id="user-bio"></p>
+                <div class="social-links" id="social-links-container"></div>
+                <div class="about-buttons">
+                    <a href="#contact" class="btn">Contact Me</a>
+                    <a href="Industry-Grade Game Developer Portfolio_ Complete.pdf" download="cv.pdf" class="btn">Get CV</a>
+                </div>
+            </div>
+            <div class="player-stats">
+                <h2>Skills</h2>
+                <div id="skills-container" class="skills-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h1 class="section-title">My Projects</h1>
+        <div class="project-tabs">
+            <button class="tab-link active" data-tab="micro-games">Micro-Games</button>
+            <button class="tab-link" data-tab="tech-demos">Tech Demos</button>
+            <button class="tab-link" data-tab="personal-projects">Personal Projects</button>
+        </div>
+
+        <div id="micro-games" class="tab-content active">
+            <div class="project-gallery" id="micro-games-projects"></div>
+        </div>
+
+        <div id="tech-demos" class="tab-content">
+            <div class="project-gallery" id="tech-demos-projects"></div>
+        </div>
+
+        <div id="personal-projects" class="tab-content">
+            <div class="project-tabs sub-tabs">
+                <button class="tab-link active" data-tab="experimental">Experimental</button>
+                <button class="tab-link" data-tab="failure">Failure</button>
+            </div>
+
+            <div id="experimental" class="tab-content sub-tab-content active">
+                <div class="project-gallery" id="experimental-projects-slider"></div>
+            </div>
+
+            <div id="failure" class="tab-content sub-tab-content">
+                <div class="project-gallery" id="failure-projects-slider"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h1 class="section-title">Get In Touch</h1>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Contact Info</h3>
+                <div class="contact-item">
+                    <i class='bx bx-envelope'></i>
+                    <div>
+                        <p>Email</p>
+                        <a id="email-link" href="#"></a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class='bx bx-phone'></i>
+                    <div>
+                        <p>Phone</p>
+                        <a id="phone-link" href="#"></a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class='bx bx-map'></i>
+                    <div>
+                        <p>Location</p>
+                        <a id="location-link" href="#" target="_blank"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="send-message-btn"><i class='bx bx-send'></i> Send Message</button>
+                    <div id="success-message" class="success-message" style="display: none;">Your message has been prepared!</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p id="footer-text"></p>
+            <div class="footer-social-links" id="footer-social-links"></div>
+        </div>
+    </footer>
+
+    <div id="project-detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-video-container">
+                <video id="modal-detail-video" controls controlsList="nodownload" loop autoplay></video>
+            </div>
+            <h2 id="modal-detail-title"></h2>
+            <p id="modal-detail-description"></p>
+            <div id="modal-detail-tech-stack" class="tech-stack-container"></div>
+            <div class="project-links">
+                <a id="repo-link" href="#" target="_blank" class="btn">View Repo</a>
+                <a id="live-link" href="#" target="_blank" class="btn">Live Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
