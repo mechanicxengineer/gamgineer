@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MySite - Game Developer</title>
+    <title>gamegineer</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,24 +16,36 @@
 
 </head>
 <body>
+
     <div id="loading-screen">
-        <div class="spinner"></div>
+        <div class="logo-container">
+            <div class="logo-glitch">gamegineer</div>
+        </div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-text">Initializing...</div>
     </div>
 
+
     <div id="vanta-bg"></div>
+
     <canvas id="mouseTrailCanvas"></canvas>
 
     <header class="header">
-        <div class="logo">MySite</div>
+        <div class="logo" id="logo-glitch2"></div>
         <nav class="nav-links">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <a href="#about"><i class='bx bxs-user'></i> About</a>
+            <a href="#projects"><i class='bx bxs-joystick'></i> Projects</a>
+            <a href="#contact"><i class='bx bxs-envelope'></i> Contact</a>
         </nav>
         <div class="header-buttons">
+            <button id="music-toggle" class="btn"><i class='bx bx-music'></i></button>
             <button class="hamburger-menu">&#9776;</button>
         </div>
     </header>
+
+    <audio id="background-music" src="" loop></audio>
 
     <nav class="mobile-nav">
         <a href="#about">About</a>
@@ -42,22 +55,30 @@
 
     <main id="hero">
         <div class="hero-content">
-            <h2 id="main-title"></h2>
+            <h2 id="main-title" class="logo-glitch" data-text=""></h2>
             <p id="location"></p>
             <p class="bio" id="bio"></p>
         </div>
     </main>
     
     <section id="about" class="about-section">
-        <h1 class="section-title">About Me</h1>
+        <h1 class="section-title animated-gradient">About Me</h1>
         <div class="player-card">
             <div class="player-avatar">
-                <img src="images/before.png" alt="Avatar">
+                <img src="images/profile_pic.png" alt="Avatar">
             </div>
             <div class="player-info">
-                <h2 id="user-name"></h2>
+                <h2 id="user-name" class="logo-glitch"></h2>
                 <p id="user-bio"></p>
                 <div class="social-links" id="social-links-container"></div>
+                <div class="equipped-engines">
+                    <h3>Equipped Engines</h3>
+                    <div class="engine-icons">
+                        <i class="devicon-unrealengine-original"></i>
+                        <i class="devicon-unity-plain"></i>
+                    </div>
+                </div>
+
                 <div class="about-buttons">
                     <a href="#contact" class="btn">Contact Me</a>
                     <a href="Industry-Grade Game Developer Portfolio_ Complete.pdf" download="cv.pdf" class="btn">Get CV</a>
@@ -71,15 +92,15 @@
     </section>
 
     <section id="projects" class="projects-section">
-        <h1 class="section-title">My Projects</h1>
+        <h1 class="section-title animated-gradient">Projects</h1>
         <div class="project-tabs">
-            <button class="tab-link active" data-tab="micro-games">Micro-Games</button>
+            <button class="tab-link active" data-tab="completed-games">Completed Games</button>
             <button class="tab-link" data-tab="tech-demos">Tech Demos</button>
             <button class="tab-link" data-tab="personal-projects">Personal Projects</button>
         </div>
 
-        <div id="micro-games" class="tab-content active">
-            <div class="project-gallery" id="micro-games-projects"></div>
+        <div id="completed-games" class="tab-content active">
+            <div class="project-gallery" id="completed-games-projects"></div>
         </div>
 
         <div id="tech-demos" class="tab-content">
@@ -103,7 +124,7 @@
     </section>
 
     <section id="contact" class="contact-section">
-        <h1 class="section-title">Get In Touch</h1>
+        <h1 class="section-title animated-gradient">Get In Touch</h1>
         <div class="contact-grid">
             <div class="contact-info">
                 <h3>Contact Info</h3>
@@ -150,6 +171,7 @@
 
     <footer>
         <div class="footer-content">
+            <div class="game-over-text">GAME OVER</div>
             <p id="footer-text"></p>
             <div class="footer-social-links" id="footer-social-links"></div>
         </div>
@@ -162,7 +184,7 @@
                 <video id="modal-detail-video" controls controlsList="nodownload" loop autoplay></video>
             </div>
             <h2 id="modal-detail-title"></h2>
-            <p id="modal-detail-description"></p>
+            <div id="modal-detail-description-content"></div>
             <div id="modal-detail-tech-stack" class="tech-stack-container"></div>
             <div class="project-links">
                 <a id="repo-link" href="#" target="_blank" class="btn">View Repo</a>

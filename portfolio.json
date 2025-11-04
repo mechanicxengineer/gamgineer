@@ -7,28 +7,39 @@
     "bio": "Hi, I'm a Game Developer with a passion for creating immersive experiences. I specialize in Unity and Unreal Engine and I love bringing ideas to life through code and design."
   },
   "skills": [
-    { "name": "Unity", "level": "90%" },
     { "name": "Unreal Engine", "level": "85%" },
-    { "name": "C#", "level": "95%" },
+    { "name": "Unity", "level": "80%" },
     { "name": "C++", "level": "80%" },
-    { "name": "Shader Graph", "level": "75%" },
-    { "name": "Blender", "level": "70%" },
-    { "name": "AI Programming", "level": "80%" },
-    { "name": "Physics Programming", "level": "75%" }
+    { "name": "C#", "level": "75%" },
+    { "name": "AI Programming", "level": "60%" },
+    { "name": "Physics Programming", "level": "75%" },
+    { "name": "Shader Graph", "level": "50%" },
+    { "name": "Blender", "level": "70%" }
   ],
   "projects": {
-    "micro-games": [
+    "completed-games": [
       {
-        "id": "micro-game-1",
-        "title": "Micro Game 1: Galactic Racer",
-        "description": "A fast-paced micro-game developed in Unity. Features procedural track generation and advanced shader effects. The project includes comprehensive documentation and a post-mortem analysis.",
-        "video": "video/rotate_earth.mp4",
-        "tech": ["Unity", "C#", "Shader Graph"],
+        "id": "completed-game-1",
+        "title": "Monster Hunt",
+        "description": ["Monster Hunt is a third-person shooter prototype designed to showcase a complete, immersive gameplay loop. Built with modular architecture and expressive feedback systems, it integrates advanced animation, responsive combat mechanics, and intelligent enemy behavior—ideal for cinematic action experiences and scalable game development.",
+          "Core Systems & Features:",
+          "● Third-Person Movement Controller: Smooth camera-relative locomotion with sprinting, crouching, vaulting, and jump states. Includes root motion and physics-based transitions.",
+          "● FABRIK-Based Advanced Animation: Real-time inverse kinematics for precise hand and weapon alignment, dynamic aiming, and contextual interactions like climbing and ledge grabbing.",
+          "● Health & Damage Architecture: Modular health system with customizable damage types, resistances, and death triggers. Supports both player and AI entities with clean event-driven logic.",
+          "● Floating Damage Numbers: Stylized feedback system for hit confirmation. Includes critical hit indicators, scaling animations, and color-coded damage types.",
+          "● Weapon Inventory & Switching: Slot-based inventory with support for primary, secondary, and throwable weapons. Includes equip animations and seamless switching logic.",
+          "● Firing & Reloading Mechanics: Supports semi-auto, burst, and full-auto fire modes, reload interruptions, and synced ammo updates. Includes dry fire and reload feedback.",
+          "● Ammo & Gun UI Indicators: HUD elements for current weapon, ammo count, reload status, and weapon type. Designed for clarity and minimal screen clutter.",
+          "● Ammo Collection System: World pickups with contextual prompts, stacking logic, and auto-collect zones. Includes visual and audio feedback.",
+          "● Visual Effects Suite: Muzzle flashes, impact sparks, reload particles, and ambient FX. Designed for performance and style using modular VFX components.",
+          "● Smart AI Enemies: Behavior-driven AI with patrol, chase, and combat states. Includes line-of-sight detection, cover-seeking, flanking logic, and dynamic reaction to player actions. Supports difficulty scaling and modular behavior trees."],
+        "video": "video/monster_hunt.mp4",
+        "tech": ["Unreal Engine", "C++", "Blueprints", "AI"],
         "repo": "https://github.com/user/galactic-racer",
-        "live": "https://user.itch.io/galactic-racer"
+        "live": ""
       },
       {
-        "id": "micro-game-2",
+        "id": "completed-game-2",
         "title": "Micro Game 2: Neon Runner",
         "description": "An endless runner with a retro-futuristic aesthetic. Built with Unreal Engine, it features dynamic obstacles and a synthwave soundtrack.",
         "video": "video/cat_on_window.mp4",
@@ -54,6 +65,7 @@
               "title": "Experimental Project",
               "description": "An experimental VR project focused on realistic physics interactions. This project was a deep dive into the Unity Physics engine and XR Interaction Toolkit. Includes a detailed post-mortem on the challenges and learnings.",
               "video": "video/rotate_earth.mp4",
+              "thumbnail": "images/before.png",
               "tech": ["Unity", "C#", "VR", "Physics"],
               "repo": "https://github.com/user/vr-physics-sandbox"
             },
@@ -72,7 +84,8 @@
               "title": "Failure Project 1 Title",
               "description": "An ambitious project that taught valuable lessons about scope management and technical challenges.",
               "video": "video/cat_on_window.mp4",
-              "tech": ["Unreal Engine", "Blueprints"]
+              "tech": ["Unreal Engine", "Blueprints"],
+              "repo": "https://github.com/user/vr-physics-sandbox"
             },
             {
               "id": "personal-failure-2",
@@ -92,8 +105,8 @@
     }
   },
   "contact": {
-    "email": "example@example.com",
-    "phone": "+91 (1234) 567890",
+    "email": "id.manishkumarsingh@gmail.com",
+    "phone": "+91 915350-5989",
     "location": "Hyderabad, India",
     "social": {
       "github": "https://github.com/user",

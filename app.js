@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function populateUI(data) {
+
     document.querySelector('.logo').textContent = data.user.logo;
-    document.getElementById('main-title').textContent = data.user.title;
+    typeWriterEffect(document.getElementById('main-title'), data.user.title, 100);
     document.getElementById('location').textContent = data.user.location;
     document.getElementById('bio').textContent = data.user.bio;
 
@@ -36,6 +37,7 @@ function populateUI(data) {
             <div class="skill-bar"><div class="skill-level" style="width: ${skill.level};"></div></div>
         `;
         skillsContainer.appendChild(skillElement);
+
     });
 
     // Social Links (Player Card)
@@ -69,10 +71,28 @@ function populateUI(data) {
         socialLink.innerHTML = `<i class='bx bxl-${key}'></i>`;
         footerSocialLinks.appendChild(socialLink);
     }
+
 }
 
+function typeWriterEffect(element, text, delay) {
+    let i = 0;
+    element.textContent = ''; // Clear existing text
+    element.setAttribute('data-text', text);
+
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, delay);
+        }
+    }
+    type();
+}
+
+
+
 function populateProjects(projects) {
-    const microGamesProjectsContainer = document.getElementById('micro-games-projects');
+    const microGamesProjectsContainer = document.getElementById('completed-games-projects');
     const techDemosProjectsContainer = document.getElementById('tech-demos-projects');
     const experimentalProjectsContainer = document.getElementById('experimental-projects-slider');
     const failureProjectsContainer = document.getElementById('failure-projects-slider');
@@ -82,7 +102,7 @@ function populateProjects(projects) {
     experimentalProjectsContainer.innerHTML = '';
     failureProjectsContainer.innerHTML = '';
 
-    projects['micro-games'].forEach(project => {
+    projects['completed-games'].forEach(project => {
         microGamesProjectsContainer.appendChild(createProjectElement(project));
     });
 
@@ -191,7 +211,36 @@ function setupEventListeners(data) {
             if (project) {
                 modalVideo.src = project.video;
                 modalTitle.textContent = project.title;
-                modalDescription.textContent = project.description;
+                
+                const descriptionContainer = document.getElementById('modal-detail-description-content');
+                descriptionContainer.innerHTML = ''; // Clear previous content
+
+                if (project.description && Array.isArray(project.description)) {
+                    // First item as introductory paragraph
+                    if (project.description[0]) {
+                        const introPara = document.createElement('p');
+                        introPara.textContent = project.description[0];
+                        descriptionContainer.appendChild(introPara);
+                    }
+
+                    // Second item as sub-heading
+                    if (project.description[1]) {
+                        const subHeading = document.createElement('h4');
+                        subHeading.textContent = project.description[1];
+                        descriptionContainer.appendChild(subHeading);
+                    }
+
+                    // Remaining items as bullet points
+                    if (project.description.length > 2) {
+                        const ul = document.createElement('ul');
+                        for (let i = 2; i < project.description.length; i++) {
+                            const li = document.createElement('li');
+                            li.textContent = project.description[i].replace(/^●\s*/, ''); // Remove bullet point character
+                            ul.appendChild(li);
+                        }
+                        descriptionContainer.appendChild(ul);
+                    }
+                }
                 modalTechStack.innerHTML = '';
                 project.tech.forEach(tech => {
                     const techBox = document.createElement('span');
@@ -261,8 +310,26 @@ function setupEventListeners(data) {
         }, 1000);
     });
 
+    const musicToggle = document.getElementById('music-toggle');
+    const backgroundMusic = document.getElementById('background-music');
+    backgroundMusic.src = 'audio/start_screen_road_to_nowhere.mp3';
+    backgroundMusic.play();
+
+    musicToggle.addEventListener('click', () => {
+        if (backgroundMusic.paused) {
+            backgroundMusic.play();
+            musicToggle.innerHTML = '<i class="bx bx-volume-full"></i>';
+        } else {
+            backgroundMusic.pause();
+            musicToggle.innerHTML = '<i class="bx bx-volume-mute"></i>';
+        }
+    });
+
+
+
     // Vanta.js background
-    VANTA.BIRDS({
+    let vantaEffect; // Declare a variable to hold the Vanta effect
+    vantaEffect = VANTA.BIRDS({
         el: "#vanta-bg",
         mouseControls: true,
         touchControls: true,
@@ -276,6 +343,75 @@ function setupEventListeners(data) {
         color2: 0xff0055,
         quantity: 3
     });
+
+    // Audio Visualizer for Vanta.js color pulsing
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioContext.createMediaElementSource(backgroundMusic);
+    const analyser = audioContext.createAnalyser();
+
+    source.connect(analyser);
+    analyser.connect(audioContext.destination);
+
+    analyser.fftSize = 64;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    function interpolateColors(colorA, colorB, factor) {
+        const rA = (colorA >> 16) & 0xff;
+        const gA = (colorA >> 8) & 0xff;
+        const bA = colorA & 0xff;
+
+        const rB = (colorB >> 16) & 0xff;
+        const gB = (colorB >> 8) & 0xff;
+        const bB = colorB & 0xff;
+
+        const r = Math.round(rA + factor * (rB - rA));
+        const g = Math.round(gA + factor * (gB - gA));
+        const b = Math.round(bA + factor * (bB - bA));
+
+        return (r << 16) + (g << 8) + b;
+    }
+
+    function renderVantaColorPulse() {
+        requestAnimationFrame(renderVantaColorPulse);
+        analyser.getByteFrequencyData(dataArray);
+
+        let sum = 0;
+        for (let i = 0; i < bufferLength / 4; i++) { // Use lower frequencies for beat detection
+            sum += dataArray[i];
+        }
+        const average = sum / (bufferLength / 4);
+
+        const blendFactor = average / 255; // 0 to 1
+        let newColor1;
+
+        if (blendFactor < 0.5) {
+            newColor1 = interpolateColors(0x1e1e2f, 0x00ffe0, blendFactor * 2);
+        } else {
+            newColor1 = interpolateColors(0x00ffe0, 0xff0055, (blendFactor - 0.5) * 2);
+        }
+
+        let newColor2 = 0xff0055; // Default color2
+        const beatThreshold = 0.8;
+        if (blendFactor > beatThreshold) {
+            newColor2 = 0xffffff; // Blink with white on strong beats
+        }
+
+        if (vantaEffect) {
+            vantaEffect.setOptions({
+                color1: newColor1,
+                color2: newColor2
+            });
+        }
+    }
+
+    backgroundMusic.addEventListener('play', () => {
+        if (audioContext.state === 'suspended') {
+            audioContext.resume();
+        }
+    });
+
+    renderVantaColorPulse();
 
     // Mouse trail
     const canvas = document.getElementById("mouseTrailCanvas");
@@ -310,6 +446,7 @@ function setupEventListeners(data) {
     }
     drawStars();
 }
+
 
 function findProjectById(projects, projectId) {
     for (const category in projects) {
