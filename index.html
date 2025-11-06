@@ -57,7 +57,7 @@
         <div class="hero-content">
             <h2 id="main-title" class="logo-glitch" data-text=""></h2>
             <p id="location"></p>
-            <p class="bio" id="bio"></p>
+            <p class="bio" id="slogan"></p>
         </div>
     </main>
     
@@ -78,7 +78,15 @@
                         <i class="devicon-unity-plain"></i>
                     </div>
                 </div>
-
+                <div class="equipped-tools">
+                <h3>Tools</h3>
+                <div class="tools-icons">
+                    <i class="devicon-visualstudio-plain"></i>
+                    <i class="devicon-vscode-plain"></i>
+                    <i class="devicon-github-original"></i>
+                </div>
+                </div>
+                
                 <div class="about-buttons">
                     <a href="#contact" class="btn">Contact Me</a>
                     <a href="Industry-Grade Game Developer Portfolio_ Complete.pdf" download="cv.pdf" class="btn">Get CV</a>
@@ -95,7 +103,7 @@
         <h1 class="section-title animated-gradient">Projects</h1>
         <div class="project-tabs">
             <button class="tab-link active" data-tab="completed-games">Completed Games</button>
-            <button class="tab-link" data-tab="tech-demos">Tech Demos</button>
+            <button class="tab-link" data-tab="tech-demos">Tech Learning Demos</button>
             <button class="tab-link" data-tab="personal-projects">Personal Projects</button>
         </div>
 
@@ -181,10 +189,11 @@
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <div class="modal-video-container">
-                <video id="modal-detail-video" controls controlsList="nodownload" loop autoplay></video>
+                <iframe id="modal-detail-video" allowfullscreen></iframe>
             </div>
             <h2 id="modal-detail-title"></h2>
             <div id="modal-detail-description-content"></div>
+            <div id="modal-extra-description-content"></div>
             <div id="modal-detail-tech-stack" class="tech-stack-container"></div>
             <div class="project-links">
                 <a id="repo-link" href="#" target="_blank" class="btn">View Repo</a>
@@ -200,5 +209,25 @@
         AOS.init();
     </script>
     <script src="app.js"></script>
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        document.onkeydown = function (e) {
+            if (e.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

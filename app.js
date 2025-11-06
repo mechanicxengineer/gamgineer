@@ -20,7 +20,7 @@ function populateUI(data) {
     document.querySelector('.logo').textContent = data.user.logo;
     typeWriterEffect(document.getElementById('main-title'), data.user.title, 100);
     document.getElementById('location').textContent = data.user.location;
-    document.getElementById('bio').textContent = data.user.bio;
+    document.getElementById('slogan').textContent = data.user.slogan;
 
     // Player Card
     document.getElementById('user-name').textContent = data.user.name;
@@ -124,8 +124,9 @@ function createProjectElement(project) {
     projectElement.classList.add('project');
     projectElement.dataset.projectId = project.id;
 
+        //<video src="${project.video}" muted loop></video>
     projectElement.innerHTML = `
-        <video src="${project.video}" muted loop></video>
+        <img src="${project.thumbnail}" alt="${project.title} Thumbnail" class="project-thumbnail">
         <div class="overlay">
             <h3>${project.title}</h3>
         </div>
@@ -198,6 +199,7 @@ function setupEventListeners(data) {
     const modalVideo = document.getElementById('modal-detail-video');
     const modalTitle = document.getElementById('modal-detail-title');
     const modalDescription = document.getElementById('modal-detail-description');
+    const modalExtraDescription = document.getElementById('modal-extra-description');
     const modalTechStack = document.getElementById('modal-detail-tech-stack');
     const repoLink = document.getElementById('repo-link');
     const liveLink = document.getElementById('live-link');
@@ -214,6 +216,9 @@ function setupEventListeners(data) {
                 
                 const descriptionContainer = document.getElementById('modal-detail-description-content');
                 descriptionContainer.innerHTML = ''; // Clear previous content
+
+                const extradescriptionContainer = document.getElementById('modal-extra-description-content');
+                extradescriptionContainer.innerHTML = ''; // Clear previous content
 
                 if (project.description && Array.isArray(project.description)) {
                     // First item as introductory paragraph
@@ -235,12 +240,33 @@ function setupEventListeners(data) {
                         const ul = document.createElement('ul');
                         for (let i = 2; i < project.description.length; i++) {
                             const li = document.createElement('li');
-                            li.textContent = project.description[i].replace(/^●\s*/, ''); // Remove bullet point character
+                            li.textContent = project.description[i].replace(/^●\s/, ''); // Remove bullet point character
                             ul.appendChild(li);
                         }
                         descriptionContainer.appendChild(ul);
                     }
                 }
+
+                if (project.extra && Array.isArray(project.extra)) {
+                    // First item as introductory paragraph
+                    if (project.extra[0]) {
+                        const subHeading = document.createElement('h4');
+                        subHeading.textContent = project.extra[0];
+                        extradescriptionContainer.appendChild(subHeading);
+                    }
+
+                    // Remaining items as bullet points
+                    if (project.extra.length > 1) {
+                        const ul = document.createElement('ul');
+                        for (let i = 1; i < project.extra.length; i++) {
+                            const li = document.createElement('li');
+                            li.textContent = project.extra[i].replace(/^●\s/, ''); // Remove bullet point character
+                            ul.appendChild(li);
+                        }
+                        extradescriptionContainer.appendChild(ul);
+                    }
+                } 
+                
                 modalTechStack.innerHTML = '';
                 project.tech.forEach(tech => {
                     const techBox = document.createElement('span');
@@ -255,15 +281,13 @@ function setupEventListeners(data) {
                 liveLink.style.display = project.live ? 'inline-block' : 'none';
 
                 projectModal.classList.add('show');
-                modalVideo.play();
             }
         });
     });
 
     const closeModal = () => {
         projectModal.classList.remove('show');
-        modalVideo.pause();
-        modalVideo.currentTime = 0;
+        modalVideo.src = '';
     };
 
     closeButton.addEventListener('click', closeModal);
