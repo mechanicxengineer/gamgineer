@@ -605,6 +605,7 @@ h2 {
 
 .project .overlay h3 {
     font-family: var(--font-title);
+    color: var(--accent-color);
     font-size: 1.5rem;
 }
 
@@ -658,12 +659,14 @@ h2 {
 .contact-item p {
     font-weight: 600;
     margin-bottom: 0.3rem;
+    font-size: 1.25rem;
 }
 
 .contact-item a {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
+    font-size: 1rem;
 }
 
 .contact-item a:hover {
@@ -1159,12 +1162,15 @@ footer {
     .contact-item p {
         font-weight: 600;
         margin-bottom: 0.3rem;
+        font-size: 1.25rem;
+        color: var(--accent-color);
     }
 
     .contact-item a {
         color: var(--text-color);
         text-decoration: none;
         transition: color 0.3s ease;
+        font-size: 1rem;
     }
 
     .contact-item a:hover {
@@ -1368,15 +1374,15 @@ footer {
 
     .contact-item p {
         font-weight: 300;
-        font-size: 0.5rem;
         margin-left: -1rem;
+        font-size: 1.25rem;
     }
     
     .contact-item a {
         color: var(--text-color);
-        font-size: 0.5rem;
         text-decoration: none;
         transition: color 0.3s ease;
+        font-size: 1rem;
         margin-left: -2.5rem;
     }
 
